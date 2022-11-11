@@ -1,0 +1,23 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr class="table-light">
+        <th *ngFor="let colActual of columnas" scope="col">
+          {{ colActual }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuarioActual of misUsuarios">
+        <td scope="col">{{ usuarioActual.id }}</td>
+        <td scope="col">{{ usuarioActual.nombre }}</td>
+        <td scope="col">{{ usuarioActual.correo }}</td>
+        <td scope="col">{{ usuarioActual.rol?.nombre }}</td>
+        <td scope="col">
+          <button class="btn btn-outline-success" (click)="update(usuarioActual.id)">Actualizar</button>
+          <button class="btn btn-outline-danger" (click)="destroy(usuarioActual.id)">Eliminar</button>          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
