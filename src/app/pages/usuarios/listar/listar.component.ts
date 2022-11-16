@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { log } from 'console';
 import Swal from 'sweetalert2';
 import { Usuario } from '../../../models/usuario/usuario.model';
 import { UsuarioService } from '../../../services/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-listar',
@@ -13,19 +13,28 @@ export class ListarComponent implements OnInit {
   columnas: string[] = ['Id', 'Nombre', 'Correo', 'Rol', 'Opciones'];
   misUsuarios: Usuario[] = [];
 
-  constructor(private miServicioUsuarios: UsuarioService) { }
+  constructor(private miServicioUsuarios: UsuarioService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.index();
+    this.listar();
   }
 
-  index() {
-    this.miServicioUsuarios.index().subscribe((usuarios: Usuario[]) => {
-      this.misUsuarios = usuarios;
+  crear(): void {
+    this.router.navigate(['/pages/usuarios/crear']);
+  }
+
+  editar(id: number): void {
+    this.router.navigate(['/pages/usuarios/actualizar/'+id]);
+  }
+
+  listar() {
+    this.miServicioUsuarios.index().subscribe((data) => {
+      this.misUsuarios = data;
     });
   }
 
-  destroy(id: number) {
+  eliminar(id: number) {
     Swal.fire({
       title: 'Eliminar Usuario',
       text: "¿Está seguro de eliminar este usuario?",
@@ -48,5 +57,5 @@ export class ListarComponent implements OnInit {
     })
   }
 
-  
+
 }

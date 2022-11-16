@@ -24,8 +24,8 @@ export class UsuarioService {
     return this.http.post<Usuario>(`${environment.url_backend}/usuarios`, elUsuario);
   }
 
-  update(id:number, elUsuario:Usuario):Observable<Usuario> {
-    return this.http.put<Usuario>(`${environment.url_backend}/usuarios/${id}`, elUsuario);
+  update(elUsuario:Usuario):Observable<Usuario> {
+    return this.http.put<Usuario>(`${environment.url_backend}/usuarios/${elUsuario.id}`, elUsuario);
   }
 
   destroy(id:number):Observable<Usuario[]> {

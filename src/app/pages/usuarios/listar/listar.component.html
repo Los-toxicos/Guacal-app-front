@@ -1,4 +1,6 @@
 <div class="container">
+  <h1>Usuarios</h1>
+  <button class="btn btn-outline-primary" (click)="crear()">Crear</button>
   <table class="table">
     <thead>
       <tr class="table-light">
@@ -14,8 +16,8 @@
         <td scope="col">{{ usuarioActual.correo }}</td>
         <td scope="col">{{ usuarioActual.rol?.nombre }}</td>
         <td scope="col">
-          <button class="btn btn-outline-success" (click)="update(usuarioActual.id)">Actualizar</button>
-          <button class="btn btn-outline-danger" (click)="destroy(usuarioActual.id)">Eliminar</button>          
+          <button class="btn btn-outline-success" (click)="editar(usuarioActual.id)">Actualizar</button>
+          <button class="btn btn-outline-danger" (click)="eliminar(usuarioActual.id)">Eliminar</button>          
         </td>
       </tr>
     </tbody>
