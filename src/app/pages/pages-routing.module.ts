@@ -79,6 +79,11 @@ const routes: Routes = [{
         .then(m => m.RolesModule),
     },
     {
+      path: 'seguridad',
+      loadChildren: () => import('./seguridad/seguridad.module')
+        .then(m => m. SeguridadModule),
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',
