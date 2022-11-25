@@ -33,9 +33,7 @@
   </div>
   <div class="row">
     <div class="col-3">
-      <label for="nombre"
-      *ngIf="modoCreacion">Contraseña</label>
-      
+      <label for="contrasena" *ngIf="modoCreacion">Contraseña</label>
     </div>
     <div class="col-9">
       <input
@@ -48,6 +46,36 @@
       />
     </div>
   </div>
-  <button *ngIf="modoCreacion" class="btn btn-primary btn-block" (click)="crear()">Crear</button>
-  <button *ngIf="!modoCreacion" class="btn btn-primary btn-block" (click)="actualizar()">Actualizar</button>
-</div>
+    <div class="row pb-3">
+      <div class="col-3">
+        <label for="rol">Rol</label>
+      </div>
+      <div class="col-9">
+        <select
+          class="form-control"
+          id="rol"
+          name="rol"
+          [(ngModel)]="idRolSeleccionado"
+        >
+          <option *ngFor="let item of roles" [value]="item.id" selected>
+            {{ item.nombre }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <button
+      *ngIf="modoCreacion"
+      class="btn btn-primary btn-block"
+      (click)="crear()"
+    >
+      Crear
+    </button>
+    <button
+      *ngIf="!modoCreacion"
+      class="btn btn-primary btn-block"
+      (click)="actualizar()"
+    >
+      Actualizar
+    </button>
+  </div>
+

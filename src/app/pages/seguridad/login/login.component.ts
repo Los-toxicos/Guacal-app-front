@@ -26,8 +26,7 @@ export class LoginComponent implements OnInit {
    * llamando al método correspondiente de los servicios
    * para solicitar la validación al backend
    */
-  login():void{  
-    console.log("aqui"+this.correo+" contraseña "+this.contrasena)
+  login():void{      
     let elUsuario:Usuario={
       correo:this.correo,
       contrasena:this.contrasena

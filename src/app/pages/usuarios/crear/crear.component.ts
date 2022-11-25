@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../../../models/usuario/usuario.model';
+import { Rol } from '../../../models/rol/rol.model';
 import { UsuarioService } from '../../../services/usuario.service';
+import { RolService } from '../../../services/rol.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,11 +21,14 @@ export class CrearComponent implements OnInit {
     correo: "",
     contrasena: "",
     id_rol: 4
-
   }
+  roles: Rol[];
+  idRolSeleccionado: number;
+
   constructor(private miServicioUsuarios: UsuarioService,
     private rutaActiva: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private miServicioRoles: RolService) { }
 
   ngOnInit(): void {
     if (this.rutaActiva.snapshot.params.id) {
@@ -33,17 +38,25 @@ export class CrearComponent implements OnInit {
     } else {
       this.modoCreacion = true;
     }
+    this.getRoles();
+  }
+  
+  getRoles() {
+    this.miServicioRoles.index().subscribe(data => {
+      this.roles = data;
+    });
   }
 
   getUsuario(id: number) {
     this.miServicioUsuarios.show(id).subscribe(data => {
-      console.log(data);
-
       this.usuario = data;
+      this.idRolSeleccionado = this.usuario.id_rol;
     });
   }
 
-  crear(): void {    
+  crear(): void {
+    this.usuario.id_rol = this.idRolSeleccionado;
+
     if (this.validarDatosCompletos()) {
       this.intentoEnvio = true;
       this.miServicioUsuarios.store(this.usuario).subscribe(data => {
@@ -58,6 +71,7 @@ export class CrearComponent implements OnInit {
   }
 
   actualizar() {
+    this.usuario.id_rol = this.idRolSeleccionado;
     if (this.validarDatosCompletos()) {
       this.miServicioUsuarios.update(this.usuario).subscribe(data => {
         Swal.fire(
@@ -75,12 +89,12 @@ export class CrearComponent implements OnInit {
     if (this.usuario.nombre == "" ||
       this.usuario.correo == "" ||
       this.usuario.contrasena == "") {
-        Swal.fire(
-          'Error!',
-          'Debe completar todos los campos.',
-          'error'
-        )
-        return false;
+      Swal.fire(
+        'Error!',
+        'Debe completar todos los campos.',
+        'error'
+      )
+      return false;
     } else {
       return true;
     }
