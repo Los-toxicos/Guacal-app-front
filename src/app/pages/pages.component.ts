@@ -35,9 +35,9 @@ export class PagesComponent {
 
     if (this.isLogged) {
       if (id == environment.ID_ROL_ADMIN) {
-        nameMenuItems = ["Login", "IoT Dashboard", "Usuarios", "Roles"];
+        nameMenuItems = ["Login", "IoT Dashboard", "Usuarios", "Roles", "Auth"];
       } else {
-        nameMenuItems = ["Login", "E-commerce", "Usuarios", "Roles"];
+        nameMenuItems = ["Login", "E-commerce", "Usuarios", "Roles", "Auth"];
       }
     } else {
       nameMenuItems = []

@@ -14,6 +14,7 @@ export class SeguridadService {
   constructor(private http: HttpClient, private router: Router) {
     this.verificarSesionActual();
   }
+
   /**
    * Permite obtener la información de usuario 
    * que tiene la función activa y servirá
@@ -29,6 +30,7 @@ export class SeguridadService {
   setUsuario(user: Usuario) {
     this.elUsuario.next(user);
   }
+
   /**
    * Permite obtener la información del usuario
    * con datos tales como el identificador y el token
@@ -37,6 +39,7 @@ export class SeguridadService {
   getUsuario() {
     return this.elUsuario.asObservable();
   }
+
   /**
    * Realiza la petición al backend con el correo y la contraseña
    * para verificar si existe o no en la plataforma
@@ -46,6 +49,7 @@ export class SeguridadService {
   login(infoUsuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${environment.url_backend}/login`, infoUsuario);
   }
+
   /**
    * Guarda los datos tales como el identificador
    * y token del usuario en una base de datos 
@@ -75,6 +79,7 @@ export class SeguridadService {
     localStorage.removeItem('sesion');
     this.setUsuario(new Usuario());
   }
+
   /**
    * Permite verificar si actualmente en el local storage
    * existe información de un usuario previamente logueado 
@@ -85,6 +90,7 @@ export class SeguridadService {
       this.setUsuario(JSON.parse(sesionActual));
     }
   }
+
   /**
    * Verifica si hay una sesion activa 
    * @returns 
@@ -93,6 +99,7 @@ export class SeguridadService {
     let sesionActual = this.getDatosSesion();
     return (sesionActual) ? true : false;
   }
+  
   /**
    * Permite obtener los dato de la sesión activa en el 
    * local storage
@@ -102,6 +109,7 @@ export class SeguridadService {
     let sesionActual = localStorage.getItem('sesion');
     return sesionActual;
   }
+
   VerificarRolSesion(rolId): boolean {
     let sesionActual = JSON.parse(this.getDatosSesion());
     return (sesionActual.id_rol == rolId);

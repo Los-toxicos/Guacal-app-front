@@ -82,8 +82,7 @@ const routes: Routes = [{
         .then(m => m.RolesModule),
     },
     {
-      path: 'seguridad',
-      canActivate: [SinAutenticarGuard],
+      path: 'seguridad',      
       loadChildren: () => import('./seguridad/seguridad.module')
         .then(m => m. SeguridadModule),
     },

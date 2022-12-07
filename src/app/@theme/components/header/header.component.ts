@@ -12,11 +12,14 @@ import { SeguridadService } from '../../../services/seguridad.service';
   styleUrls: ['./header.component.scss'],
   templateUrl: './header.component.html',
 })
+
 export class HeaderComponent implements OnInit, OnDestroy {
+
+  isLoggedIn: boolean = false;
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
-  user: any= {
+  user: any = {
     name: '',
   };
 
@@ -41,7 +44,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  userMenu = [
+    { title: 'Login', link: 'pages/seguridad/login', icon: 'log-in-outline' },
+    { title: 'Logout', link: 'pages/seguridad/logout', icon: 'log-out-outline' }];
 
   subscription: Subscription;
 
@@ -51,12 +56,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private userService: UserData,
     private layoutService: LayoutService,
     private breakpointService: NbMediaBreakpointsService,
-    private SeguridadService: SeguridadService) {
-  }
+    private SeguridadService: SeguridadService
+  ) { }
 
   ngOnInit() {
-    this.subscription = this.SeguridadService.getUsuario().subscribe(data => {      
+    this.subscription = this.SeguridadService.getUsuario().subscribe(data => {
       this.user.name = data.nombre;
+      this.isLoggedIn = true;      
     });
 
     this.currentTheme = this.themeService.currentTheme;
@@ -75,11 +81,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+
   }
 
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  logout() {
+    console.log('Logout Exitoso');
+    this.SeguridadService.logout();
+    this.isLoggedIn = false;
   }
 
   changeTheme(themeName: string) {
