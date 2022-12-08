@@ -7,6 +7,7 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { AutenticacionGuard } from '../guardianes/autenticacion.guard';
 import { SinAutenticarGuard } from '../guardianes/sin-autenticar.guard';
+import { GuacalesModule } from './guacales/guacales.module';
 
 const routes: Routes = [{
   path: '',
@@ -14,82 +15,71 @@ const routes: Routes = [{
   children: [
     {
       path: 'dashboard',
-      component: ECommerceComponent,
-    },
-    {
-      path: 'iot-dashboard',
       component: DashboardComponent,
     },
     {
-      path: 'layout',
-      loadChildren: () => import('./layout/layout.module')
-        .then(m => m.LayoutModule),
-    },
+      path: 'aerolineas',
+      /* canActivate: [AutenticacionGuard], */
+      loadChildren: () => import('./aerolineas/aerolineas.module')
+        .then(m => m.AerolineasModule),
+    }, 
     {
-      path: 'forms',
-      loadChildren: () => import('./forms/forms.module')
-        .then(m => m.FormsModule),
-    },
+      path: 'guacales',
+      /* canActivate: [AutenticacionGuard], */
+      loadChildren: () => import('./guacales/guacales.module')
+        .then(m => m.GuacalesModule),
+    }, 
     {
-      path: 'ui-features',
-      loadChildren: () => import('./ui-features/ui-features.module')
-        .then(m => m.UiFeaturesModule),
-    },
+      path: 'mascotas',
+      /* canActivate: [AutenticacionGuard], */
+      loadChildren: () => import('./mascotas/mascotas.module')
+        .then(m => m.MascotasModule),
+    }, 
     {
-      path: 'modal-overlays',
-      loadChildren: () => import('./modal-overlays/modal-overlays.module')
-        .then(m => m.ModalOverlaysModule),
-    },
+      path: 'perfiles',
+      /* canActivate: [AutenticacionGuard], */
+      loadChildren: () => import('./perfiles/perfiles.module')
+        .then(m => m.PerfilesModule),
+    }, 
     {
-      path: 'extra-components',
-      loadChildren: () => import('./extra-components/extra-components.module')
-        .then(m => m.ExtraComponentsModule),
-    },
-    {
-      path: 'maps',
-      loadChildren: () => import('./maps/maps.module')
-        .then(m => m.MapsModule),
-    },
-    {
-      path: 'charts',
-      loadChildren: () => import('./charts/charts.module')
-        .then(m => m.ChartsModule),
-    },
-    {
-      path: 'editors',
-      loadChildren: () => import('./editors/editors.module')
-        .then(m => m.EditorsModule),
-    },
-    {
-      path: 'tables',
-      loadChildren: () => import('./tables/tables.module')
-        .then(m => m.TablesModule),
-    },
-    {
-      path: 'miscellaneous',
-      loadChildren: () => import('./miscellaneous/miscellaneous.module')
-        .then(m => m.MiscellaneousModule),
-    },        
-    {
-      path: 'usuarios',
-      canActivate: [AutenticacionGuard],
-      loadChildren: () => import('./usuarios/usuarios.module')
-        .then(m => m.UsuariosModule),
+      path: 'permisos',
+      /* canActivate: [AutenticacionGuard], */
+      loadChildren: () => import('./permisos/permisos.module')
+        .then(m => m.PermisosModule),
     },
     {
       path: 'roles',
       loadChildren: () => import('./roles/roles.module')
         .then(m => m.RolesModule),
+    }, 
+    {
+      path: 'rutas',
+      /* canActivate: [AutenticacionGuard], */
+      loadChildren: () => import('./rutas/rutas.module')
+        .then(m => m.RutasModule),
+    }, 
+    {
+      path: 'usuarios',
+      /* canActivate: [AutenticacionGuard], */
+      loadChildren: () => import('./usuarios/usuarios.module')
+        .then(m => m.UsuariosModule),
+    }, 
+    {
+      path: 'veterinarios',
+      /* canActivate: [AutenticacionGuard], */
+      loadChildren: () => import('./veterinarios/veterinarios.module')
+        .then(m => m.VeterinariosModule),
     },
     {
-      path: 'seguridad',      
+      path: 'vuelos',
+      /* canActivate: [AutenticacionGuard], */
+      loadChildren: () => import('./vuelos/vuelos.module')
+        .then(m => m.VuelosModule),
+    },
+    {
+      path: 'seguridad',
       loadChildren: () => import('./seguridad/seguridad.module')
-        .then(m => m. SeguridadModule),
-    },
-    {
-      path: '',
-      redirectTo: 'dashboard',
-      pathMatch: 'full',
+        .then(m => m.SeguridadModule),
     },
     {
       path: '**',

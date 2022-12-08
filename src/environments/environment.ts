@@ -12,4 +12,7 @@ export const environment = {
   production: false,
   url_backend: 'http://127.0.0.1:3333',
   ID_ROL_ADMIN: 1,
+  ID_ROL_AIRLINE_OPERATOR: 2,
+  ID_ROL_USER: 3,
+  ID_ROL_GUEST: 4
 };

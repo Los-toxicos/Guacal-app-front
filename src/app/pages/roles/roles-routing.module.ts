@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ListarComponent } from './listar/listar.component';
 import { CrearComponent } from './crear/crear.component';
+import { AdministradorGuard } from '../../guardianes/administrador.guard';
 
 const routes: Routes = [
   {
@@ -9,7 +11,7 @@ const routes: Routes = [
     component: ListarComponent
   },
   {
-    path: 'crear',
+    path: 'crear',    
     component: CrearComponent
   },
   {

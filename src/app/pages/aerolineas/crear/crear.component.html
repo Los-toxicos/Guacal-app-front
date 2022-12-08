@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <h1 *ngIf="modoCreacion">Crear Aerolinea</h1>
+    <h1 *ngIf="!modoCreacion">Actualizar Aerolinea</h1>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <label for="nombre">Nombre</label>
+    </div>
+    <div class="col-9">
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="aerolinea.nombre"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <label for="nit">Nit</label>
+    </div>
+    <div class="col-9">
+      <input
+        type="text"
+        class="form-control"
+        id="nit"
+        name="nit"
+        [(ngModel)]="aerolinea.nit"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <label for="codigo">codigo</label>
+    </div>
+    <div class="col-9">
+      <input
+        type="text"
+        class="form-control"
+        id="codigo"
+        name="codigo"
+        [(ngModel)]="aerolinea.codigo"
+      />
+    </div>
+  </div>
+  <button
+    *ngIf="modoCreacion"
+    class="btn btn-primary btn-block"
+    (click)="crear()"
+  >
+    Crear
+  </button>
+  <button
+    *ngIf="!modoCreacion"
+    class="btn btn-primary btn-block"
+    (click)="actualizar()"
+  >
+    Actualizar
+  </button>
+</div>

@@ -18,9 +18,7 @@ import { NbSecurityModule } from '@nebular/security';
 
 import {
   FooterComponent,
-  HeaderComponent,
-  SearchInputComponent,
-  TinyMCEComponent,
+  HeaderComponent
 } from './components';
 import {
   CapitalizePipe,
@@ -56,8 +54,6 @@ const NB_MODULES = [
 const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
-  SearchInputComponent,
-  TinyMCEComponent,
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,

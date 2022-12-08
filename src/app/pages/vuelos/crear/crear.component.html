@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+      <h1 *ngIf="modoCreacion">Crear Usuario</h1>
+      <h1 *ngIf="!modoCreacion">Actualizar Usuario</h1>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label for="nombre">Nombre</label>
+      </div>
+      <div class="col-9">
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="usuario.nombre"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label for="correo">Correo</label>
+      </div>
+      <div class="col-9">
+        <input
+          type="text"
+          class="form-control"
+          id="correo"
+          name="correo"
+          [(ngModel)]="usuario.correo"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label for="contrasena" *ngIf="modoCreacion">Contraseña</label>
+      </div>
+      <div class="col-9">
+        <input
+          type="password"
+          class="form-control"
+          id="contrasena"
+          name="contrasena"
+          [(ngModel)]="usuario.contrasena"
+          *ngIf="modoCreacion"
+        />
+      </div>
+    </div>
+      <div class="row pb-3">
+        <div class="col-3">
+          <label for="rol">Rol</label>
+        </div>
+        <div class="col-9">
+          <select
+            class="form-control"
+            id="rol"
+            name="rol"
+            [(ngModel)]="idRolSeleccionado"
+          >
+            <option *ngFor="let item of roles" [value]="item.id" selected>
+              {{ item.nombre }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <button
+        *ngIf="modoCreacion"
+        class="btn btn-primary btn-block"
+        (click)="crear()"
+      >
+        Crear
+      </button>
+      <button
+        *ngIf="!modoCreacion"
+        class="btn btn-primary btn-block"
+        (click)="actualizar()"
+      >
+        Actualizar
+      </button>
+    </div>
+  
+  

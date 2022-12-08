@@ -18,7 +18,6 @@ const routes: Routes = [
     path: 'actualizar/:id',
     component: CrearComponent
   }
-
 ];
 
 @NgModule({
