@@ -3,19 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListarComponent } from './listar/listar.component';
 import { CrearComponent } from './crear/crear.component';
-import { AdministradorGuard } from '../../guardianes/administrador.guard';
+import { UsuarioGuard } from '../../guardianes/usuario.guard'; 
+import { AdministradorGuard } from '../../guardianes/administrador.guard'; 
+
 
 const routes: Routes = [
   {
     path: 'listar',
+    
     component: ListarComponent
   },
   {
     path: 'crear',    
+    canActivate: [AdministradorGuard],
     component: CrearComponent
   },
   {
     path: 'actualizar/:id',
+    canActivate: [AdministradorGuard],
     component: CrearComponent
   }
 ];

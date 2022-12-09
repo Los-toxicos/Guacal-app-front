@@ -37,20 +37,19 @@ export class PagesComponent {
       let id = rol.id
 
       if (id == environment.ID_ROL_ADMIN) {
-        nameMenuItems = ["Administrador", "Login", "Home", "Aerolineas", "Guacales", "Mascotas", "Perfiles", "Permisos", "Roles", "Rutas", "Usuarios", "Veterinarios", "Vuelos"];
+        nameMenuItems = ["Administrador", "Login", "Home", "Aerolineas", "Guacales", "Mascotas",/*  "Perfiles", "Permisos", "Roles", */ "Rutas", "Usuarios", "Veterinarios", "Vuelos"];
       } else if (id == environment.ID_ROL_AIRLINE_OPERATOR) {
         nameMenuItems = ["Operador de Aerolinea", "Login", "Home", "Guacales", "Rutas", "Veterinarios", "Vuelos"];
       } else if (id == environment.ID_ROL_USER) {
         nameMenuItems = ["Usuario", "Login", "Home", "Aerolineas", "Mascotas", "Rutas", "Vuelos", "Veterinarios"];
       } else if (id == environment.ID_ROL_GUEST) {
-        nameMenuItems = ["Invitado", "Login", "Home", "Aerolineas", "Rutas", "Veterinarios"];
+        nameMenuItems = ["Invitado", "Login", "Home", "Aerolineas", "Rutas", "Vuelos", "Veterinarios"];
       } else {
-        nameMenuItems = ["Login", "Home", "Aerolineas", "Rutas", "Veterinarios"];
+        nameMenuItems = ["Invitado", "Login", "Home", "Aerolineas", "Rutas", "Vuelos", "Veterinarios"];
         console.log("No se encontro el rol");
-
       }
     } else {
-      nameMenuItems = ["Login", "Home", "Aerolineas", "Rutas", "Veterinarios"]
+      nameMenuItems = ["Invitado", "Login", "Home", "Aerolineas", "Rutas", "Vuelos", "Veterinarios"]
       console.log("No está logueado");
 
     }

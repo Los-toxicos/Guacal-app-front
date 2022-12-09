@@ -7,6 +7,7 @@ import { AdministradorGuard } from '../../guardianes/administrador.guard';
 const routes: Routes = [
   {
     path: 'listar',
+    canActivate: [AdministradorGuard],
     component: ListarComponent
   },
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'actualizar/:id',
+    canActivate: [AdministradorGuard],
     component: CrearComponent
   }
 ];

@@ -12,11 +12,12 @@ export class AdministradorGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.miServicioSeguridad.sesionExiste() && this.miServicioSeguridad.VerificarRolSesion(environment.ID_ROL_ADMIN)) {
+    if (this.miServicioSeguridad.sesionExiste() && this.miServicioSeguridad.VerificarRolSesion(environment.ID_ROL_ADMIN)) {      
       return true;
+    } else {
+      this.router.navigate(['pages/seguridad/login']);
+      return false;
     }
-    this.router.navigate(['pages/seguridad/login']);
-    return false;
   }
 }
 

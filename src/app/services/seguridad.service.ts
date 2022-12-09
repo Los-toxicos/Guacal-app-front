@@ -59,14 +59,15 @@ export class SeguridadService {
    * fue almacenada correctamente
    */
   guardarDatosSesion(datosSesion: any) {
+    let token = datosSesion.token.token;
     let sesionActual = localStorage.getItem('sesion');
     let data: Usuario = {
       id: datosSesion.usuario.id,
       id_rol: datosSesion.usuario.rol,
       nombre: datosSesion.usuario.nombre,
       correo: datosSesion.usuario.correo,
-      token: datosSesion.token,
-    };
+      token: token,
+    };    
     localStorage.setItem('sesion', JSON.stringify(data));
     this.setUsuario(data);
   }
@@ -111,8 +112,12 @@ export class SeguridadService {
   }
 
   VerificarRolSesion(rolId): boolean {
-    let sesionActual = JSON.parse(this.getDatosSesion());
-    return (sesionActual.id_rol == rolId);
+    let sesionActual = JSON.parse(this.getDatosSesion()).id_rol.id;        
+    if (sesionActual == rolId) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
