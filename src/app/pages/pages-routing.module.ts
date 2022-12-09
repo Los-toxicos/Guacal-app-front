@@ -9,7 +9,7 @@ import { AutenticacionGuard } from '../guardianes/autenticacion.guard';
 import { AdministradorGuard } from '../guardianes/administrador.guard'; 
 import { SinAutenticarGuard } from '../guardianes/sin-autenticar.guard';
 import { OperadorAdminGuard } from '../guardianes/operadorAdmin.guard';
-import { UsuarioGuard } from '../guardianes/usuario.guard'; 
+import { UsuarioAdminGuard } from '../guardianes/usuarioAdmin.guard'; 
 
 
 const routes: Routes = [{

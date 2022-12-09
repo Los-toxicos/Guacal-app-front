@@ -119,6 +119,13 @@ export class SeguridadService {
       return false;
     }
   }
+
+  loginInvitado(){                
+      let data = {id_rol: 4, nombre: 'Invitado'};    
+      localStorage.setItem('sesion', JSON.stringify(data));      
+
+  }
+  
 }
 
 

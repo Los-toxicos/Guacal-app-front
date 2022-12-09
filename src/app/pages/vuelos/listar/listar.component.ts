@@ -37,11 +37,13 @@ export class ListarComponent implements OnInit {
       this.rutas = data;
     });
   }
+
   getAerolineas() {
     this.miServicioAerolineas.index().subscribe(data => {
       this.aerolineas = data;
     });
   }
+  
   getVeterinarios(id) {
     this.miServicioVeterinarios.show(id).subscribe(data => {          
     });

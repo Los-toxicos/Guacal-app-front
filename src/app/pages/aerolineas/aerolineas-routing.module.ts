@@ -3,14 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListarComponent } from './listar/listar.component';
 import { CrearComponent } from './crear/crear.component';
-import { UsuarioGuard } from '../../guardianes/usuario.guard'; 
+import { UsuarioAdminGuard } from '../../guardianes/usuarioAdmin.guard'; 
 import { AdministradorGuard } from '../../guardianes/administrador.guard'; 
 
 
 const routes: Routes = [
   {
-    path: 'listar',
-    
+    path: 'listar',    
     component: ListarComponent
   },
   {

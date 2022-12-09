@@ -7,8 +7,7 @@ import { OperadorAdminGuard } from '../../guardianes/operadorAdmin.guard';
 
 const routes: Routes = [
   {
-    path: 'listar',
-    canActivate: [OperadorAdminGuard],
+    path: 'listar',    
     component: ListarComponent
   },
   {

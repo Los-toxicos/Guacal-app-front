@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioGuard implements CanActivate {
+export class UsuarioAdminGuard implements CanActivate {
   constructor(private miServicioSeguridad: SeguridadService, private router: Router) { }
   canActivate(
     route: ActivatedRouteSnapshot,

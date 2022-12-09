@@ -6,13 +6,15 @@ import { NbCardModule } from '@nebular/theme';
 import { SeguridadRoutingModule } from './seguridad-routing.module';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { InvitadoComponent } from './invitado/invitado.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    InvitadoComponent
   ],
   imports: [
     CommonModule,

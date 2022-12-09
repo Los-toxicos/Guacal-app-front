@@ -47,7 +47,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userMenu = [
     { title: 'Login', link: 'pages/seguridad/login', icon: 'log-in-outline' },
-    { title: 'Logout', link: 'pages/seguridad/logout', icon: 'log-out-outline' }];
+    { title: 'Logout', link: 'pages/seguridad/logout', icon: 'log-out-outline' },
+    { title: 'Invitado', link: 'pages/seguridad/invitado', icon: 'person' }];
 
   subscription: Subscription;
 
