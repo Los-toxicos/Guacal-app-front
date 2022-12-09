@@ -18,8 +18,8 @@ export class CrearComponent implements OnInit {
     tamano: "",
     estado: ""
   }
-  estados=["Reservado", "Disponible", "En reparacion"];
-  tamanos=["S", "M", "L", "XL"];
+  estados=["RESERVADO", "VACIO"];
+  tamanos=["PEQUEÑO", "MEDIANO", "GRANDE"];
   constructor(
     private miServicioUsuarios: UsuarioService,
     private rutaActiva: ActivatedRoute,
