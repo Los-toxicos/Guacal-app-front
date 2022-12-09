@@ -11,6 +11,7 @@ import { UsuarioService } from '../../../services/usuario.service';
   styleUrls: ['./crear.component.scss']
 })
 export class CrearComponent implements OnInit {
+
   modoCreacion: boolean = true;
   id_usuario: number = 0;
   intentoEnvio: boolean = false;
@@ -20,8 +21,7 @@ export class CrearComponent implements OnInit {
   }
   estados=["RESERVADO", "VACIO"];
   tamanos=["PEQUEÑO", "MEDIANO", "GRANDE"];
-  constructor(
-    private miServicioUsuarios: UsuarioService,
+  constructor(    
     private rutaActiva: ActivatedRoute,
     private router: Router,
     private miServicioGuacales: GuacalService
@@ -38,9 +38,8 @@ export class CrearComponent implements OnInit {
    
   }
   getUsuario(id: number) {
-    this.miServicioUsuarios.show(id).subscribe(data => {
-     
-      this.id_usuario = data.id;
+    this.miServicioGuacales.show(id).subscribe(data => {     
+      this.guacal = data;
     });
   }
   crear(): void {
@@ -67,7 +66,7 @@ export class CrearComponent implements OnInit {
           'El guacal ha sido actualizado.',
           'success'
         )
-        this.router.navigate(['/pages/guacals/listar']);
+        this.router.navigate(['/pages/guacales/listar']);
       });
     }
   }

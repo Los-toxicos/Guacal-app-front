@@ -10,8 +10,9 @@ import { MascotaService } from '../../../services/mascota.service';
   styleUrls: ['./listar.component.scss']
 })
 export class ListarComponent implements OnInit {
-  columnas: string[] = ['Id', 'Nombre', 'Especie', 'Peso', 'Estatura'];
+  columnas: string[] = ['Id', 'Nombre', 'Especie', 'Peso', 'Estatura', 'Acciones'];
   misMascotas: Mascota[] = [];
+  
   constructor(
     private miServicioMascotas: MascotaService,
     private router: Router

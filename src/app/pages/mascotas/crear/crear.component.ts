@@ -13,8 +13,9 @@ import { UsuarioService } from '../../../services/usuario.service';
   styleUrls: ['./crear.component.scss']
 })
 export class CrearComponent implements OnInit {
+
   modoCreacion: boolean = true;
-  id_usuario: number = 0;
+  id_mascota: number = 0;
   intentoEnvio: boolean = false;
   mascota: Mascota = {
     nombre: "",
@@ -24,8 +25,10 @@ export class CrearComponent implements OnInit {
     id_usuario: null,
     id_guacal:null
   }
-  especies:["Felino", "Canino", "Otros"];
+  especies: string[] = ["Felino", "Canino", "Otros"];
   guacales:Guacal[];
+  valueEspecieSeleccionada: string;
+  idGuacalSeleccionado: number;
   constructor(
     private miServicioUsuarios: UsuarioService,
     private rutaActiva: ActivatedRoute,
@@ -37,8 +40,8 @@ export class CrearComponent implements OnInit {
   ngOnInit(): void {
     if (this.rutaActiva.snapshot.params.id) {
       this.modoCreacion = false;
-      this.id_usuario = this.rutaActiva.snapshot.params.id;
-      this.getUsuario(this.id_usuario)
+      this.id_mascota = this.rutaActiva.snapshot.params.id;
+      this.getMascota(this.id_mascota)
     } else {
       this.modoCreacion = true;
     }
@@ -46,17 +49,19 @@ export class CrearComponent implements OnInit {
     
   }
 
+
   getGuacales(){
-    this.miServicioGuacales.index().subscribe(
-      data=>{
+    this.miServicioGuacales.index().subscribe(data=>{
         this.guacales=data;
       }
     )
   }
-  getUsuario(id: number) {
-    this.miServicioUsuarios.show(id).subscribe(data => {
-      
-      this.mascota.id_usuario = data.id;
+
+  getMascota(id: number) {
+    this.miservicioMascotas.show(id).subscribe(data => {      
+      this.mascota = data;
+      this.valueEspecieSeleccionada = this.mascota.especie
+      this.idGuacalSeleccionado = this.mascota.id_guacal;
     });
   }
 
