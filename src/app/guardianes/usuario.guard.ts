@@ -12,12 +12,13 @@ export class UsuarioGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.miServicioSeguridad.sesionExiste() && this.miServicioSeguridad.VerificarRolSesion(environment.ID_ROL_USER)) {
+    if (this.miServicioSeguridad.sesionExiste() && (this.miServicioSeguridad.VerificarRolSesion(environment.ID_ROL_USER) ||
+      this.miServicioSeguridad.VerificarRolSesion(environment.ID_ROL_ADMIN))) {
       return true;
     }
     this.router.navigate(['pages/seguridad/login']);
     return false;
   }
 }
-  
+
 

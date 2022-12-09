@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OperadorGuard } from './operador.guard';
+import { OperadorAdminGuard } from './operadorAdmin.guard';
 
-describe('OperadorGuard', () => {
-  let guard: OperadorGuard;
+describe('OperadorAdminGuard', () => {
+  let guard: OperadorAdminGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(OperadorGuard);
+    guard = TestBed.inject(OperadorAdminGuard);
   });
 
   it('should be created', () => {
