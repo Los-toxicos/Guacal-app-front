@@ -1,1 +1,35 @@
-<p>crear works!</p>
+<div class="container">
+  <div class="row">
+    <h1 *ngIf="modoCreacion">Crear Rol</h1>
+    <h1 *ngIf="!modoCreacion">Actualizar Rol</h1>
+  </div>
+  <div class="row pb-3">
+    <div class="col-3">
+      <label for="nombre">Nombre</label>
+    </div>
+    <div class="col-9">
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="rol.nombre"
+      />
+    </div>
+  </div>  
+
+  <button
+    *ngIf="modoCreacion"
+    class="btn btn-primary btn-block"
+    (click)="crear()"
+  >
+    Crear
+  </button>
+  <button
+    *ngIf="!modoCreacion"
+    class="btn btn-primary btn-block"
+    (click)="actualizar()"
+  >
+    Actualizar
+  </button>
+</div>
