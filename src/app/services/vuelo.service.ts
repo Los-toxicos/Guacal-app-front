@@ -24,8 +24,8 @@ export class VueloService {
     return this.http.post<Vuelo>(`${environment.url_backend}/vuelos`, elVuelo);
   }
 
-  update(id: number, elVuelo: Vuelo): Observable<Vuelo> {
-    return this.http.put<Vuelo>(`${environment.url_backend}/vuelos/${id}`, elVuelo);
+  update(elVuelo: Vuelo): Observable<Vuelo> {
+    return this.http.put<Vuelo>(`${environment.url_backend}/vuelos/${elVuelo.id}`, elVuelo);
   }
 
   destroy(id: number): Observable<Vuelo[]> {

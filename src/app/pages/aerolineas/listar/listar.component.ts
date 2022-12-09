@@ -10,20 +10,23 @@ import { AerolineaService } from '../../../services/aerolinea.service';
   styleUrls: ['./listar.component.scss']
 })
 export class ListarComponent implements OnInit {
-  columnas: string[] = ['Id', 'Nombre', 'Nit', 'Codigo'];
+
+  columnas: string[] = ['Id', 'Nombre', 'Nit', 'Codigo', 'Acciones'];
   misAerolineas: Aerolinea[] = [];
+
   constructor(private miServicioAerolinea: AerolineaService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.listar();
   }
+
   crear(): void {
     this.router.navigate(['/pages/aerolineas/crear']);
   }
 
   editar(id: number): void {
-    this.router.navigate(['/pages/aerolineas/actualizar/'+id]);
+    this.router.navigate(['/pages/aerolineas/actualizar/' + id]);
   }
 
   listar() {
@@ -35,7 +38,7 @@ export class ListarComponent implements OnInit {
   eliminar(id: number) {
     Swal.fire({
       title: 'Eliminar aerolinea',
-      text: "¿Está seguro de eliminar este aerolinea?",
+      text: "¿Está seguro de eliminar esta aerolinea?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

@@ -11,36 +11,35 @@ import { VeterinarioService } from '../../../services/veterinario.service';
   styleUrls: ['./crear.component.scss']
 })
 export class CrearComponent implements OnInit {
+
   modoCreacion: boolean = true;
-  id_usuario: number = 0;
+  id_veterinario: number = 0;
   intentoEnvio: boolean = false;
   veterinario: Veterinario = {
     nombre: "",
     especialidad: ""
   }
-  idRolSeleccionado: number;
-  constructor(private miServicioVeterinarios: VeterinarioService,
-    private miServicioUsuarios: UsuarioService,
+  
+  constructor(private miServicioVeterinarios: VeterinarioService,    
     private rutaActiva: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
     if (this.rutaActiva.snapshot.params.id) {
       this.modoCreacion = false;
-      this.id_usuario = this.rutaActiva.snapshot.params.id;
-      this.getUsuario(this.id_usuario)
+      this.id_veterinario = this.rutaActiva.snapshot.params.id;
+      this.getVeterinario(this.id_veterinario)
     } else {
       this.modoCreacion = true;
     }
   }
-  getUsuario(id: number) {
-    this.miServicioUsuarios.show(id).subscribe(data => {
-      
-      this.idRolSeleccionado = data.id_rol;
+  getVeterinario(id: number) {
+    this.miServicioVeterinarios.show(id).subscribe(data => {
+      this.veterinario = data;
+            
     });
   }
-  crear(): void {
-    //this.usuario.id_rol = this.idRolSeleccionado;
+  crear(): void {    
 
     if (this.validarDatosCompletos()) {
       this.intentoEnvio = true;
@@ -55,10 +54,9 @@ export class CrearComponent implements OnInit {
     }
   }
 
-  actualizar() {
-   // this.veterinario.id_rol = this.idRolSeleccionado;
+  actualizar() {   
     if (this.validarDatosCompletos()) {
-      this.miServicioVeterinarios.update(this.veterinario.id,this.veterinario).subscribe(data => {
+      this.miServicioVeterinarios.update(this.veterinario).subscribe(data => {
         Swal.fire(
           'Actualizado!',
           'El veterinario ha sido actualizado.',

@@ -16,8 +16,18 @@
         <td scope="col">{{ usuarioActual.correo }}</td>
         <td scope="col">{{ usuarioActual.rol?.nombre }}</td>
         <td scope="col">
-          <button class="btn btn-outline-success m-1" (click)="editar(usuarioActual.id)">Actualizar</button>
-          <button class="btn btn-outline-danger" (click)="eliminar(usuarioActual.id)">Eliminar</button>          
+          <button
+            class="btn btn-outline-success m-1"
+            (click)="editar(usuarioActual.id)"
+          >
+            Actualizar
+          </button>
+          <button
+            class="btn btn-outline-danger"
+            (click)="eliminar(usuarioActual.id)"
+          >
+            Eliminar
+          </button>
         </td>
       </tr>
     </tbody>

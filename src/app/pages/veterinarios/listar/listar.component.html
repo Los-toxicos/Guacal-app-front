@@ -12,12 +12,12 @@
       <tbody>
         <tr *ngFor="let veterinarioActual of misVeterinarios">
           <td scope="col">{{ veterinarioActual.id }}</td>
-          <td scope="col">{{ veterinarioActual.origen }}</td>
-          <td scope="col">{{ veterinarioActual.destino }}</td>
+          <td scope="col">{{ veterinarioActual.nombre }}</td>
+          <td scope="col">{{ veterinarioActual.especialidad }}</td>
         
                     <td scope="col">
-            <button class="btn btn-outline-success m-1" (click)="editar(usuarioActual.id)">Actualizar</button>
-            <button class="btn btn-outline-danger" (click)="eliminar(usuarioActual.id)">Eliminar</button>          
+            <button class="btn btn-outline-success m-1" (click)="editar(veterinarioActual.id)">Actualizar</button>
+            <button class="btn btn-outline-danger" (click)="eliminar(veterinarioActual.id)">Eliminar</button>          
           </td>
         </tr>
       </tbody>

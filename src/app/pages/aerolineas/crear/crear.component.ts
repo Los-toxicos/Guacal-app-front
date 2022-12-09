@@ -11,17 +11,17 @@ import { UsuarioService } from '../../../services/usuario.service';
   styleUrls: ['./crear.component.scss']
 })
 export class CrearComponent implements OnInit {
+
   modoCreacion: boolean = true;
-  id_usuario: number = 0;
+  id_aerolinea: number = 0;
   intentoEnvio: boolean = false;
   aerolinea: Aerolinea = {
     nombre: "",
     nit: "",
     codigo: "",
-  }
-  idRolSeleccionado: number;
-  constructor(
-    private miServicioUsuarios: UsuarioService,
+  }  
+
+  constructor(    
     private rutaActiva: ActivatedRoute,
     private router: Router,
     private miServicioAerolinea: AerolineaService
@@ -30,26 +30,29 @@ export class CrearComponent implements OnInit {
   ngOnInit(): void {
     if (this.rutaActiva.snapshot.params.id) {
       this.modoCreacion = false;
-      this.id_usuario = this.rutaActiva.snapshot.params.id;
-      this.getUsuario(this.id_usuario)
+      this.id_aerolinea = this.rutaActiva.snapshot.params.id;
+      this.getAerolinea(this.id_aerolinea)
     } else {
       this.modoCreacion = true;
     }
   }
-  getUsuario(id: number) {
-    this.miServicioUsuarios.show(id).subscribe(data => {
-      this.idRolSeleccionado = data.id_rol;
+
+  getAerolinea(id: number) {
+    this.miServicioAerolinea.show(id).subscribe(data => {
+      this.aerolinea = data; 
+      console.log(this.aerolinea);
+           
     });
   }
-  crear(): void {
-   // this.usuario.id_rol = this.idRolSeleccionado;
+
+  crear(): void {    
 
     if (this.validarDatosCompletos()) {
       this.intentoEnvio = true;
       this.miServicioAerolinea.store(this.aerolinea).subscribe(data => {
         Swal.fire(
           'Creado!',
-          'El aerolinea ha sido creado.',
+          'La aerolinea ha sido creada.',
           'success'
         )
         this.router.navigate(['/pages/aerolineas/listar']);
@@ -57,13 +60,12 @@ export class CrearComponent implements OnInit {
     }
   }
 
-  actualizar() {
-   // this.aerolinea.id_rol = this.idRolSeleccionado;
+  actualizar() {    
     if (this.validarDatosCompletos()) {
-      this.miServicioAerolinea.update(this.aerolinea.id,this.aerolinea).subscribe(data => {
+      this.miServicioAerolinea.update(this.aerolinea).subscribe(data => {
         Swal.fire(
           'Actualizado!',
-          'El aerolinea ha sido actualizado.',
+          'La aerolinea ha sido actualizada.',
           'success'
         )
         this.router.navigate(['/pages/aerolineas/listar']);

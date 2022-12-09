@@ -10,19 +10,22 @@ import { VeterinarioService } from '../../../services/veterinario.service';
   styleUrls: ['./listar.component.scss']
 })
 export class ListarComponent implements OnInit {
-  columnas: string[] = ['Id', 'Nombre', 'Especialidad'];
+
+  columnas: string[] = ['Id', 'Nombre', 'Especialidad', 'Acciones'];
   misVeterinarios: Veterinario[] = [];
+
   constructor(private miServicioVeterinarios: VeterinarioService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.listar();
   }
   crear(): void {
-    this.router.navigate(['/pages/vuelos/crear']);
+    this.router.navigate(['/pages/veterinarios/crear']);
   }
 
   editar(id: number): void {
-    this.router.navigate(['/pages/vuelos/actualizar/'+id]);
+    this.router.navigate(['/pages/veterinarios/actualizar/'+id]);
   }
 
   listar() {

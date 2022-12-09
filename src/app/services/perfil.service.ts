@@ -24,8 +24,8 @@ export class PerfilService {
     return this.http.post<Perfil>(`${environment.url_backend}/perfiles`, elPerfil);
   }
 
-  update(id: number, elPerfil: Perfil): Observable<Perfil> {
-    return this.http.put<Perfil>(`${environment.url_backend}/perfiles/${id}`, elPerfil);
+  update(elPerfil: Perfil): Observable<Perfil> {
+    return this.http.put<Perfil>(`${environment.url_backend}/perfiles/${elPerfil.id}`, elPerfil);
   }
 
   destroy(id: number): Observable<Perfil[]> {

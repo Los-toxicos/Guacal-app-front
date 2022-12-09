@@ -24,8 +24,8 @@ export class RolService {
     return this.http.post<Rol>(`${environment.url_backend}/roles`, elRol);
   }
 
-  update(id: number, elRol: Rol): Observable<Rol> {
-    return this.http.put<Rol>(`${environment.url_backend}/roles/${id}`, elRol);
+  update(elRol: Rol): Observable<Rol> {
+    return this.http.put<Rol>(`${environment.url_backend}/roles/${elRol.id}`, elRol);
   }
 
   destroy(id: number): Observable<Rol[]> {

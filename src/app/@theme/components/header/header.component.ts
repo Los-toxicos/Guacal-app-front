@@ -6,6 +6,7 @@ import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
 import { SeguridadService } from '../../../services/seguridad.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-header',
@@ -56,7 +57,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private userService: UserData,
     private layoutService: LayoutService,
     private breakpointService: NbMediaBreakpointsService,
-    private SeguridadService: SeguridadService
+    private SeguridadService: SeguridadService,
+    private router : Router
   ) { }
 
   ngOnInit() {
@@ -107,7 +109,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   navigateHome() {
-    this.menuService.navigateHome();
-    return false;
+    this.router.navigate(['/pages/dashboard']);    
   }
 }

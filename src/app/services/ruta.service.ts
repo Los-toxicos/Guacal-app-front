@@ -24,8 +24,8 @@ export class RutaService {
     return this.http.post<Ruta>(`${environment.url_backend}/rutas`, laRuta);
   }
 
-  update(id: number, laRuta: Ruta): Observable<Ruta> {
-    return this.http.put<Ruta>(`${environment.url_backend}/rutas/${id}`, laRuta);
+  update(laRuta: Ruta): Observable<Ruta> {
+    return this.http.put<Ruta>(`${environment.url_backend}/rutas/${laRuta.id}`, laRuta);
   }
 
   destroy(id: number): Observable<Ruta[]> {

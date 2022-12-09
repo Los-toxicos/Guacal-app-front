@@ -14,15 +14,15 @@ export class CrearComponent implements OnInit {
   id_usuario: number = 0;
   intentoEnvio: boolean = false;
   ruta: Ruta = {
-    origen:"",
-    destino:""
-  }
-  idRutaSeleccionada:number;
-  ciudades=["Bogota", "Medellin", "Cali", "Pereira", "Cartagena", "Barranquilla",
-  "Santa Marta", "Manizales", "Pasto", "Quibdo", "La guajira", "Villavicencio", 
-  "Cucutá", "Bucaramanga", "Ibagué"
-]
-  constructor( private miServicioRutas: RutaService,
+    origen: "",
+    destino: ""
+  }  
+  ciudades = ["Bogota", "Medellin", "Cali", "Pereira", "Cartagena", "Barranquilla",
+    "Santa Marta", "Manizales", "Pasto", "Quibdo", "La guajira", "Villavicencio",
+    "Cucutá", "Bucaramanga", "Ibagué"
+  ];
+
+  constructor(private miServicioRutas: RutaService,
     private rutaActiva: ActivatedRoute,
     private router: Router) { }
 
@@ -30,16 +30,23 @@ export class CrearComponent implements OnInit {
     if (this.rutaActiva.snapshot.params.id) {
       this.modoCreacion = false;
       this.id_usuario = this.rutaActiva.snapshot.params.id;
+      this.getRuta(this.id_usuario);
     } else {
       this.modoCreacion = true;
     }
-    
+
+  }
+
+  getRuta(id: number) {
+    this.miServicioRutas.show(id).subscribe(data => {
+      this.ruta = data;
+      console.log(this.ruta);
+    });
   }
 
   crear(): void {
-    //this.usuario.id_rol = this.idRolSeleccionado;
     if (this.validarDatosCompletos()) {
-      this.miServicioRutas.store(this.ruta).subscribe(data=>{
+      this.miServicioRutas.store(this.ruta).subscribe(data => {
         Swal.fire(
           'Creado!',
           'La ruta ha sido creada.',
@@ -50,10 +57,9 @@ export class CrearComponent implements OnInit {
     }
   }
 
-  actualizar() {
-    this.ruta.id = this.idRutaSeleccionada;
+  actualizar() {    
     if (this.validarDatosCompletos()) {
-      this.miServicioRutas.update(this.ruta.id, this.ruta ).subscribe(data => {
+      this.miServicioRutas.update(this.ruta).subscribe(data => {
         Swal.fire(
           'Actualizado!',
           'El ruta ha sido actualizado.',
@@ -62,18 +68,9 @@ export class CrearComponent implements OnInit {
         this.router.navigate(['/pages/rutas/listar']);
       });
     }
-  }
+  }  
 
-  eliminar()
-{
-  this.miServicioRutas.destroy(this.idRutaSeleccionada).subscribe(
-    data=>{
-      console.log(data);
-    }
-  )
-} 
-
-validarDatosCompletos(): boolean {
+  validarDatosCompletos(): boolean {
     this.intentoEnvio = true;
     if (
       this.ruta.origen == "" ||
@@ -87,5 +84,5 @@ validarDatosCompletos(): boolean {
     } else {
       return true;
     }
-}
+  }
 }

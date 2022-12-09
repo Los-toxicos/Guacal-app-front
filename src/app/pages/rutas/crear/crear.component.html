@@ -1,55 +1,54 @@
 <div class="container">
-    <div class="row">
-      <h1 *ngIf="modoCreacion">Crear Ruta</h1>
-      <h1 *ngIf="!modoCreacion">Actualizar Ruta</h1>
+  <div class="row">
+    <h1 *ngIf="modoCreacion">Crear Ruta</h1>
+    <h1 *ngIf="!modoCreacion">Actualizar Ruta</h1>
+  </div>
+  <div class="row pb-3">
+    <div class="col-3">
+      <label for="nombre">Origen</label>
     </div>
-    <div class="row">
-      <div class="col-3">
-        <label for="nombre">Origen</label>
-      </div>
-      <div class="col-9">
-        <select
-          class="form-control"
-          id="origen"
-          name="origen"
-          [(ngModel)]="ruta.origen"
-        >
-          <option *ngFor="let item of ciudades" [value]="item" selected>
-            {{ item }}
-          </option>
-        </select>
-    </div>
-    <div class="row">
-        <div class="col-3">
-          <label for="nombre">Destino</label>
-        </div>
-        <div class="col-9">
-          <select
-            class="form-control"
-            id="destino"
-            name="destino"
-            [(ngModel)]="ruta.destino"
-          >
-            <option *ngFor="let item of ciudades" [value]="item" selected>
-              {{ item }}
-            </option>
-          </select>
-      </div>
-    
-      <button
-        *ngIf="modoCreacion"
-        class="btn btn-primary btn-block"
-        (click)="crear()"
+    <div class="col-9">
+      <select
+        class="form-control"
+        id="origen"
+        name="origen"
+        [(ngModel)]="ruta.origen"
       >
-        Crear
-      </button>
-      <button
-        *ngIf="!modoCreacion"
-        class="btn btn-primary btn-block"
-        (click)="actualizar()"
-      >
-        Actualizar
-      </button>
+        <option *ngFor="let item of ciudades" [value]="item" selected>
+          {{ item }}
+        </option>
+      </select>
     </div>
-  
-  
+  </div>
+  <div class="row pb-3">
+    <div class="col-3">
+      <label for="nombre">Destino</label>
+    </div>
+    <div class="col-9">
+      <select
+        class="form-control"
+        id="destino"
+        name="destino"
+        [(ngModel)]="ruta.destino"
+      >
+        <option *ngFor="let item of ciudades" [value]="item" selected>
+          {{ item }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <button
+    *ngIf="modoCreacion"
+    class="btn btn-primary btn-block"
+    (click)="crear()"
+  >
+    Crear
+  </button>
+  <button
+    *ngIf="!modoCreacion"
+    class="btn btn-primary btn-block"
+    (click)="actualizar()"
+  >
+    Actualizar
+  </button>
+</div>

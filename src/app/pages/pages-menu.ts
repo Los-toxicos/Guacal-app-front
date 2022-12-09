@@ -3,6 +3,23 @@ import { NbMenuItem } from '@nebular/theme';
 export const MENU_ITEMS: NbMenuItem[] = [
 
   {
+    title: 'Administrador',    
+  },
+  {
+    title: 'Operador de Aerolinea',    
+  },
+  {
+    title: 'Usuario',    
+  },
+  {
+    title: 'Invitado',    
+  },
+  {
+    title: 'Login',
+    icon: 'log-in-outline',
+    link: '/pages/seguridad/login',    
+  },
+  {
     title: 'Home',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',

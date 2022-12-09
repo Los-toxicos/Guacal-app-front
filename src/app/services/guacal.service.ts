@@ -24,8 +24,8 @@ export class GuacalService {
     return this.http.post<Guacal>(`${environment.url_backend}/guacales`, elGuacal);
   }
 
-  update(id: number, elGuacal: Guacal): Observable<Guacal> {
-    return this.http.put<Guacal>(`${environment.url_backend}/guacales/${id}`, elGuacal);
+  update( elGuacal: Guacal): Observable<Guacal> {
+    return this.http.put<Guacal>(`${environment.url_backend}/guacales/${elGuacal.id}`, elGuacal);
   }
 
   destroy(id: number): Observable<Guacal[]> {

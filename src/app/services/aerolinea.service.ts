@@ -24,8 +24,8 @@ export class AerolineaService {
     return this.http.post<Aerolinea>(`${environment.url_backend}/aerolineas`, laAerolinea);
   }
 
-  update(id: number, laAerolinea: Aerolinea): Observable<Aerolinea> {
-    return this.http.put<Aerolinea>(`${environment.url_backend}/aerolineas/${id}`, laAerolinea);
+  update(laAerolinea: Aerolinea): Observable<Aerolinea> {
+    return this.http.put<Aerolinea>(`${environment.url_backend}/aerolineas/${laAerolinea.id}`, laAerolinea);
   }
 
   destroy(id: number): Observable<Aerolinea[]> {

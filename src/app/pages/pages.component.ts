@@ -37,22 +37,22 @@ export class PagesComponent {
       let id = rol.id
 
       if (id == environment.ID_ROL_ADMIN) {
-        nameMenuItems = ["Login", "Home", "Aerolineas", "Guacales", "Mascotas", "Perfiles", "Permisos", "Roles", "Rutas", "Usuarios", "Veterinarios", "Vuelos"];
-        console.log("Administrador");         
+        nameMenuItems = ["Administrador", "Login", "Home", "Aerolineas", "Guacales", "Mascotas", "Perfiles", "Permisos", "Roles", "Rutas", "Usuarios", "Veterinarios", "Vuelos"];
       } else if (id == environment.ID_ROL_AIRLINE_OPERATOR) {
-        nameMenuItems = ["Login", "Home", "Aerolineas", "Guacales", "Mascotas", "Rutas", "Veterinarios", "Vuelos"];        
-        console.log("Operador de Aerolinea");        
+        nameMenuItems = ["Operador de Aerolinea", "Login", "Home", "Guacales", "Rutas", "Veterinarios", "Vuelos"];
       } else if (id == environment.ID_ROL_USER) {
-        nameMenuItems = ["Login", "Home", "Aerolineas", "Mascotas", "Perfiles", "Rutas", "Vuelos"];        
-        console.log("Usuario");      
+        nameMenuItems = ["Usuario", "Login", "Home", "Aerolineas", "Mascotas", "Rutas", "Vuelos", "Veterinarios"];
       } else if (id == environment.ID_ROL_GUEST) {
-        nameMenuItems = ["Login", "Home", "Aerolineas", "Rutas", "Veterinarios"];        
-        console.log("Invitado");        
+        nameMenuItems = ["Invitado", "Login", "Home", "Aerolineas", "Rutas", "Veterinarios"];
       } else {
-        nameMenuItems = ["Login", "E-commerce", "Aerolineas", "Rutas", "Veterinarios"];        
+        nameMenuItems = ["Login", "Home", "Aerolineas", "Rutas", "Veterinarios"];
+        console.log("No se encontro el rol");
+
       }
     } else {
-      nameMenuItems = ["Login", "E-commerce", "Aerolineas", "Rutas", "Veterinarios"]
+      nameMenuItems = ["Login", "Home", "Aerolineas", "Rutas", "Veterinarios"]
+      console.log("No está logueado");
+
     }
     MENU_ITEMS.forEach(actualNameMenuItem => {
       if (nameMenuItems.indexOf(actualNameMenuItem.title) != -1) {

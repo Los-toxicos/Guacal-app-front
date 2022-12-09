@@ -24,8 +24,8 @@ export class MascotaService {
     return this.http.post<Mascota>(`${environment.url_backend}/mascotas`, laMascota);
   }
 
-  update(id: number, laMascota: Mascota): Observable<Mascota> {
-    return this.http.put<Mascota>(`${environment.url_backend}/mascotas/${id}`, laMascota);
+  update(laMascota: Mascota): Observable<Mascota> {
+    return this.http.put<Mascota>(`${environment.url_backend}/mascotas/${laMascota.id}`, laMascota);
   }
 
   destroy(id: number): Observable<Mascota[]> {

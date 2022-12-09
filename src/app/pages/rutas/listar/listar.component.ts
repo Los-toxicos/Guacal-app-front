@@ -10,19 +10,22 @@ import { RutaService } from '../../../services/ruta.service';
   styleUrls: ['./listar.component.scss']
 })
 export class ListarComponent implements OnInit {
-  columnas: string[] = ['Id', 'Origen', 'Destino'];
+  columnas: string[] = ['Id', 'Origen', 'Destino', 'Acciones'];
   misRutas: Ruta[] = [];
+
   constructor(private miServicioRutas: RutaService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.listar();
   }
+
   crear(): void {
-    this.router.navigate(['/pages/vuelos/crear']);
+    this.router.navigate(['/pages/rutas/crear']);
   }
 
   editar(id: number): void {
-    this.router.navigate(['/pages/vuelos/actualizar/'+id]);
+    this.router.navigate(['/pages/rutas/actualizar/' + id]);
   }
 
   listar() {

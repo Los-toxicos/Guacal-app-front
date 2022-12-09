@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./listar.component.scss']
 })
 export class ListarComponent implements OnInit {
-  columnas: string[] = ['Id', 'Nombre', 'Correo', 'Rol', 'Opciones'];
+  columnas: string[] = ['Id', 'Nombre', 'Correo', 'Rol', 'Acciones'];
   misUsuarios: Usuario[] = [];
 
   constructor(private miServicioUsuarios: UsuarioService,
@@ -25,7 +25,7 @@ export class ListarComponent implements OnInit {
   }
 
   editar(id: number): void {
-    this.router.navigate(['/pages/usuarios/actualizar/'+id]);
+    this.router.navigate(['/pages/usuarios/actualizar/' + id]);
   }
 
   listar() {

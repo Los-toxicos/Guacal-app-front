@@ -24,8 +24,8 @@ export class PermisoService {
     return this.http.post<Permiso>(`${environment.url_backend}/permisos`, elPermiso);
   }
 
-  update(id: number, elPermiso: Permiso): Observable<Permiso> {
-    return this.http.put<Permiso>(`${environment.url_backend}/permisos/${id}`, elPermiso);
+  update(elPermiso: Permiso): Observable<Permiso> {
+    return this.http.put<Permiso>(`${environment.url_backend}/permisos/${elPermiso.id}`, elPermiso);
   }
 
   destroy(id: number): Observable<Permiso[]> {

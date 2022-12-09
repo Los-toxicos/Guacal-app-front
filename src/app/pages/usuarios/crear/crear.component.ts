@@ -40,7 +40,7 @@ export class CrearComponent implements OnInit {
     }
     this.getRoles();
   }
-  
+
   getRoles() {
     this.miServicioRoles.index().subscribe(data => {
       this.roles = data;
@@ -49,7 +49,7 @@ export class CrearComponent implements OnInit {
 
   getUsuario(id: number) {
     this.miServicioUsuarios.show(id).subscribe(data => {
-      this.usuario = data;
+      this.usuario = data;      
       this.idRolSeleccionado = this.usuario.id_rol;
     });
   }

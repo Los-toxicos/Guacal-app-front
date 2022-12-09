@@ -24,8 +24,8 @@ export class VeterinarioService {
     return this.http.post<Veterinario>(`${environment.url_backend}/veterinarios`, elVeterinario);
   }
 
-  update(id: number, elVeterinario: Veterinario): Observable<Veterinario> {
-    return this.http.put<Veterinario>(`${environment.url_backend}/veterinarios/${id}`, elVeterinario);
+  update(elVeterinario: Veterinario): Observable<Veterinario> {
+    return this.http.put<Veterinario>(`${environment.url_backend}/veterinarios/${elVeterinario.id}`, elVeterinario);
   }
 
   destroy(id: number): Observable<Veterinario[]> {
