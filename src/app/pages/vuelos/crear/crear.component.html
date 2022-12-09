@@ -1,68 +1,109 @@
 <div class="container">
     <div class="row">
-      <h1 *ngIf="modoCreacion">Crear Usuario</h1>
-      <h1 *ngIf="!modoCreacion">Actualizar Usuario</h1>
+      <h1 *ngIf="modoCreacion">Crear Vuelo</h1>
+      <h1 *ngIf="!modoCreacion">Actualizar Vuelo</h1>
     </div>
     <div class="row">
       <div class="col-3">
-        <label for="nombre">Nombre</label>
+        <label for="nombre">Seleccione ruta </label>
       </div>
       <div class="col-9">
-        <input
-          type="text"
-          class="form-control"
-          id="nombre"
-          name="nombre"
-          [(ngModel)]="usuario.nombre"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <label for="correo">Correo</label>
-      </div>
-      <div class="col-9">
-        <input
-          type="text"
-          class="form-control"
-          id="correo"
-          name="correo"
-          [(ngModel)]="usuario.correo"
-        />
+        
+          <select
+            class="form-control"
+            id="ruta"
+            name="ruta"
+            [(ngModel)]="vuelo.id_ruta"
+          >
+            <option *ngFor="let item of rutas" [value]="item.id" selected>
+            {{ item.origen }} - {{item.destino}}
+            </option>
+          </select>
+        
       </div>
     </div>
     <div class="row">
       <div class="col-3">
-        <label for="contrasena" *ngIf="modoCreacion">Contraseña</label>
+        <label for="correo">Seleccione aerolinea </label>
+      </div>
+      <div class="col-9">
+        
+          <select
+            class="form-control"
+            id="aerolinea"
+            name="aerolinea"
+            [(ngModel)]="vuelo.id_aerolinea"
+          >
+            <option *ngFor="let item of aerolineas" [value]="item.id" selected>
+              {{ item.nombre }}
+            </option>
+          </select>
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label for="correo">Seleccione veterinario </label>
+      </div>
+      <div class="col-9">
+        
+          <select
+            class="form-control"
+            id="veterinario"
+            name="veterinario"
+            [(ngModel)]="vuelo.id_veterinario"
+          >
+            <option *ngFor="let item of veterinarios" [value]="item.id" selected>
+              {{ item.nombre }}
+            </option>
+          </select>
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label for="hora_llegada" *ngIf="modoCreacion">Hora de salida</label>
       </div>
       <div class="col-9">
         <input
-          type="password"
+          type="datetime-local"
           class="form-control"
-          id="contrasena"
-          name="contrasena"
-          [(ngModel)]="usuario.contrasena"
+          id="hora_llegada"
+          name="hora_llegada"
+          [(ngModel)]="vuelo.hora_llegada"
           *ngIf="modoCreacion"
         />
       </div>
     </div>
-      <div class="row pb-3">
-        <div class="col-3">
-          <label for="rol">Rol</label>
-        </div>
-        <div class="col-9">
-          <select
-            class="form-control"
-            id="rol"
-            name="rol"
-            [(ngModel)]="idRolSeleccionado"
-          >
-            <option *ngFor="let item of roles" [value]="item.id" selected>
-              {{ item.nombre }}
-            </option>
-          </select>
-        </div>
+    <div class="row">
+      <div class="col-3">
+        <label for="hora_salida" *ngIf="modoCreacion">Hora de salida</label>
       </div>
+      <div class="col-9">
+        <input
+          type="datetime-local"
+          class="form-control"
+          id="hora_salida"
+          name="hora_salida"
+          [(ngModel)]="vuelo.hora_salida"
+          *ngIf="modoCreacion"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label for="capacidad">Capacidad</label>
+      </div>
+      <div class="col-9">
+        <input
+          type="text"
+          class="form-control"
+          id="capacidad"
+          name="capacidad"
+          [(ngModel)]="vuelo.capacidad"
+        />
+      </div>
+    </div>
       <button
         *ngIf="modoCreacion"
         class="btn btn-primary btn-block"
