@@ -1,1 +1,37 @@
-<p>listar works!</p>
+<div class="container">
+    <h1>Mascotas</h1>
+    <button class="btn btn-outline-primary mb-3" (click)="crear()">Crear</button>
+    <table class="table">
+      <thead>
+        <tr class="table-light">
+          <th *ngFor="let colActual of columnas" scope="col">
+            {{ colActual }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mascotaActual of misMascotas">
+          <td scope="col">{{ mascotaActual.id }}</td>
+          <td scope="col">{{ mascotaActual.nombre }}</td>
+          <td scope="col">{{ mascotaActual.especie }}</td>
+          <td scope="col">{{ mascotaActual.peso}}</td>
+          <td scope="col">{{ mascotaActual.estatura}}</td>
+          <td scope="col">
+            <button
+              class="btn btn-outline-success m-1"
+              (click)="editar(mascotaActual.id)"
+            >
+              Actualizar
+            </button>
+            <button
+              class="btn btn-outline-danger"
+              (click)="eliminar(mascotaActual.id)"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

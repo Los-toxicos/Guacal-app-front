@@ -1,1 +1,65 @@
-<p>crear works!</p>
+<div class="container">
+    <div class="row">
+        <h1 *ngIf="modoCreacion">Crear Mascota</h1>
+        <h1 *ngIf="!modoCreacion">Actualizar Mascota</h1>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label for="nombre">Nombre</label>
+        </div>
+        <div class="col-9">
+            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="mascota.nombre" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label for="peso">Peso</label>
+        </div>
+        <div class="col-9">
+            <input type="number" class="form-control" id="peso" name="peso" [(ngModel)]="mascota.peso" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label for="estatura" *ngIf="modoCreacion">Estatura</label>
+        </div>
+        <div class="col-9">
+            <input type="number" class="form-control" id="estatura" name="estatura" [(ngModel)]="mascota.estatura" />
+        </div>
+    </div>
+    <div class="row pb-3">
+        <div class="col-3">
+          <label for="especie">Especie</label>
+        </div>
+        <div class="col-9">
+          <select
+            class="form-control"
+            id="especie"
+            name="especie"
+            [(ngModel)]="mascota.especie"
+          >
+            <option *ngFor="let item of especies" [value]="item" selected>
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+    <div class="row pb-3">
+        <div class="col-3">
+            <label for="guacal">Guacal</label>
+        </div>
+        <div class="col-9">
+            <select class="form-control" id="guacal" name="guacal" [(ngModel)]="mascota.id_guacal">
+                <option *ngFor="let item of guacales" [value]="item.id" selected>
+                    {{ item.tamano }}-{{item.estado}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <button *ngIf="modoCreacion" class="btn btn-primary btn-block" (click)="crear()">
+        Crear
+    </button>
+    <button *ngIf="!modoCreacion" class="btn btn-primary btn-block" (click)="actualizar()">
+        Actualizar
+    </button>
+</div>

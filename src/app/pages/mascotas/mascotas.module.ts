@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MascotasRoutingModule } from './mascotas-routing.module';
 import { CrearComponent } from './crear/crear.component';
 import { ListarComponent } from './listar/listar.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ListarComponent } from './listar/listar.component';
   ],
   imports: [
     CommonModule,
-    MascotasRoutingModule
+    MascotasRoutingModule,
+    FormsModule
   ]
 })
 export class MascotasModule { }

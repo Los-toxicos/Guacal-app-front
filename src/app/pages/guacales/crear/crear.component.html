@@ -1,1 +1,36 @@
-<p>crear works!</p>
+<div class="container">
+    <div class="row">
+        <h1 *ngIf="modoCreacion">Crear Guacal</h1>
+        <h1 *ngIf="!modoCreacion">Actualizar Guacal</h1>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label for="tamano">Tamaño</label>
+        </div>
+        <div class="col-9">
+            <select class="form-control" id="tamano" name="tamano" [(ngModel)]="guacal.tamano">
+                <option *ngFor="let item of tamanos" [value]="item" selected>
+                    {{ item }}
+                </option>
+            </select>
+        </div>
+
+        <div class="row pb-3">
+            <div class="col-3">
+                <label for="estado">Estado</label>
+            </div>
+            <div class="col-9">
+                <select class="form-control" id="estado" name="estado" [(ngModel)]="guacal.estado">
+                    <option *ngFor="let item of estados" [value]="item" selected>
+                        {{ item }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <button *ngIf="modoCreacion" class="btn btn-primary btn-block" (click)="crear()">
+            Crear
+        </button>
+        <button *ngIf="!modoCreacion" class="btn btn-primary btn-block" (click)="actualizar()">
+            Actualizar
+        </button>
+    </div>
