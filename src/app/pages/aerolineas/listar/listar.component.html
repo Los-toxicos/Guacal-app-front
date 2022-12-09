@@ -1,1 +1,26 @@
-<p>listar works!</p>
+<div class="container">
+    <h1>Aerolineas</h1>
+    <button class="btn btn-outline-primary mb-3" (click)="crear()">Crear</button>
+    <table class="table">
+      <thead>
+        <tr class="table-light">
+          <th *ngFor="let colActual of columnas" scope="col">
+            {{ colActual }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aerolineaActual of misAerolineas">
+          <td scope="col">{{ aerolineaActual.id }}</td>
+          <td scope="col">{{ aerolineaActual.nombre }}</td>
+          <td scope="col">{{ aerolineaActual.nit }}</td>
+          <td scope="col">{{ aerolineaActual.codigo }}</td>
+        
+                    <td scope="col">
+            <button class="btn btn-outline-success m-1" (click)="editar(usuarioActual.id)">Actualizar</button>
+            <button class="btn btn-outline-danger" (click)="eliminar(usuarioActual.id)">Eliminar</button>          
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
